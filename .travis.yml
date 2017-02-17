@@ -6,4 +6,4 @@ jdk:
 script:
         - mkdir dist
         - javac -d dist src/*/*.java
-        - java ./dist/main/Main  
+        - java -d dist main/Main  
