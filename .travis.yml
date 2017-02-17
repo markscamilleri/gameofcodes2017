@@ -5,5 +5,5 @@ jdk:
 
 script:
         - mkdir dist
-        - javac -d dist FileIO.java Main.java
+        - javac -d dist ./files/FileIO.java ./main/Main.java
         - java ./dist/main/Main  
