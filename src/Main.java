@@ -2,6 +2,7 @@ import auxiliary.Tuple;
 import files.FileIO;
 import files.Parser;
 
+import javax.print.attribute.standard.Destination;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -21,7 +22,7 @@ public class Main {
         FileIO file = new FileIO("sampleProblem.rds", "output.rt");
         try {
             Parser parse = new Parser(file.readInput());
-            System.out.println(routeFinder(parse.getRoutes(), parse.getRouteTimes(), parse.getDestination(), parse.getMaxTime(), parse.getOrigin(), parse.getPlaces()));
+            System.out.println(routeFinder(parse.getRoutes(), parse.getDestination(), parse.getOrigin()));
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -30,7 +31,7 @@ public class Main {
 
     }
 
-    public static List<List<Tuple<String,String>>> routeFinder(String[][] route, int[][] routeTimes, String Destination, int arrivalTime, String origin, String[] places) {
+    public static List<List<Tuple<String, String>>> routeFinder(String[][] route, String Destination, String origin) {
 
         //calculate routes
         List<Integer> or = new ArrayList<>();
@@ -56,13 +57,95 @@ public class Main {
 
 
                 }
-               // System.out.println("" + r);
+                // System.out.println("" + r);
 
                 routes.add(r);
             }
         }
 
-            return routes;
+        return routes;
+    }
+
+
+    public static void singRouteOpt(List<Tuple<String, String>> route, int[][] routeTimes, String[][] mappedRoutes, int maxTime, String origin, String destination, int index) {
+
+        int[] timeIndeces = new int[route.size()];
+        if(route.get(0).getX2().equals(destination)){
+
+
+        }
+        for (int c = index; c < timeIndeces.length; c++) {
+
+            for (int i = 0; i < mappedRoutes.length; i++) {
+
+                if (route.get(c).getX1().equals(mappedRoutes[i][0]) && route.get(c).getX2().equals(mappedRoutes[i][1])) {
+
+                    //if route found in search, get the associated time values and store in array
+                    timeIndeces[c] = i;
+                    break;
+
+                }
+
+
+            }
+
+        }
+
+        boolean cof = false;
+
+        int[][] totals = new int[maxTime * timeIndeces.length][timeIndeces.length*timeIndeces.length];
+
+         for (int iter = 0; iter < timeIndeces.length; iter++) {
+
+             if (route.get(iter).getX1().charAt(0) == '*' || route.get(iter).getX1().equals(origin)) {
+
+                 cof = true;
+
+             }
+
+             if(cof){
+
+            /*     do:
+
+
+
+                         while();*/
+
+             }
+
+
+
+
+         }
+           /* for (int col = 0; col < maxTime; col++) {
+
+                if (cof) {
+
+                    //set to 0
+                    totals[iter] += routeTimes[iter][col];
+
+                }
+
+            }
+
+        }*/
+
+    }
+   // }
+
+
+    public static void multRoutOpt(List<List<Tuple<String, String>>> routes, int maxTime, int[][] routeTimes, String[][] mappedRoutes) {
+
+        int[] optTimes = new int[routes.size()];
+        int index = 0;
+
+        for (int i = 0; i < routes.size(); i++) {
+            // call route
+
+
+        }
+
+
     }
 
 
