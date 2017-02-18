@@ -1,10 +1,10 @@
 # gameofcodes2017 [![Build Status](https://travis-ci.com/markscamilleri/gameofcodes2017.svg?token=npXrSaqtXLCYdQdEQHQQ&branch=master)](https://travis-ci.com/markscamilleri/gameofcodes2017) 
 Our time has come to play the Game of Codes `queue Game of Thrones theme`
 
-## Team Name
-Call of Duty: #Hash Ops
+##Team Name
+###Call of Duty: #Hash Ops
 
-## Team Members
+##Team Members
 Name | Username
 -----|---------
 Mark Said Camilleri | @markscamilleri
