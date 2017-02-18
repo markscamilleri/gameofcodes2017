@@ -19,4 +19,9 @@ public class Tuple<T, U> {
     public U getX2() {
         return u;
     }
+    
+    @Override
+    public String toString() {
+        return "<" + t + ", " + u + '>';
+    }
 }
