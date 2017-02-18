@@ -22,6 +22,6 @@ public class Tuple<T, U> {
     
     @Override
     public String toString() {
-        return "<" + t + ", " + u + '>';
+        return "<" + t.toString() + ", " + u.toString() + '>';
     }
 }
