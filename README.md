@@ -6,6 +6,7 @@ Call of Duty: #Hash Ops
 
 ## Team Members
 Name | Username
+-----|---------
 Mark Said Camilleri | @markscamilleri
 Daniel Magro | @DanielMagro97
 Darren Aquilina | @daqu0019
