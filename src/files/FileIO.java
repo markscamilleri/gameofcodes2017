@@ -19,7 +19,7 @@ public class FileIO {
     
     public String[] readInput() throws IOException {
         String[] data = Files.readAllLines(inputFile).toArray(new String[]{});
-        
+        1
         return data;
     }
     

@@ -4,9 +4,7 @@ import files.Parser;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-import java.util.StringJoiner;
 
 public class Main {
 
@@ -64,6 +62,38 @@ public class Main {
 
             return routes;
     }
-
+    
+    private static int getMinTotal(int[][] times, int x_index, int[] timeIndices, int y_index, int min_total, String[][] mappedRoutes){
+        if(x_index >= times[0].length) return min_total;
+        else if (mappedRoutes[y_index][0].charAt(0) != '*') {
+            
+            // if no coffee
+            int toAdd  = times[timeIndices[y_index]][x_index];
+            min_total += toAdd;
+            return min_total + getMinTotal(times, x_index + toAdd, timeIndices, y_index + 1, min_total, mappedRoutes);
+        } else{
+            
+            int[] minima = new int[times[0].length - x_index];
+            
+            for(int i = 0; i < times[0].length - x_index; i++){
+                int toAdd = i + times[timeIndices[y_index]][x_index + i];
+                minima[i] = toAdd;
+                minima[i] = getMinTotal(times, x_index + toAdd, timeIndices, y_index + 1, min_total + minima[i], mappedRoutes);
+            }
+            
+            return arrayMin(minima);
+            
+        }
+    }
+    
+    private static int arrayMin(int[] minima) {
+        int min = Integer.MAX_VALUE;
+        
+        for (int i : minima) {
+            if(i < min) min = i;
+        }
+        
+        return min;
+    }
 
 }
