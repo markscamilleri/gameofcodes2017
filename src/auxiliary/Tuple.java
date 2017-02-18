@@ -1,4 +1,4 @@
-package aux;
+package auxiliary;
 
 /**
  * Created by mark on 18/02/17.
