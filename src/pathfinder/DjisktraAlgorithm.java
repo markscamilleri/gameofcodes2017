@@ -70,7 +70,7 @@ private Map <Vertex, Integer> totalDistance;
               }
    private int getDistance(Vertex location, Vertex destination){
                   for (Edge edge : edges){
-                      if(edge.getSoure().equals(location) && edge.getDestination().equals(destination)){
+                      if(edge.getSource().equals(location) && edge.getDestination().equals(destination)){
                           return edge.getWeight( ); //to DO
 
                       }
@@ -88,14 +88,63 @@ private Map <Vertex, Integer> totalDistance;
             List<Vertex> adjLocations = new ArrayList<Vertex>();
 
             for(Edge edge : edges){
-                if(edge.getSource().equals(location) && !isSetttled)
+                if(edge.getSource().equals(location) && !isSettled(edge.getDestination())){
+                    adjLocations.add(edge.getDestination());
+                }
 
             }
-
+     return adjLocations;
 
 
 
         }
+
+     private Vertex getMinimum(Set<Vertex> locations){
+
+            Vertex min = null;
+            for( Vertex loc : locations){
+                if(min == null)
+                {
+                    min = loc;
+                }else{
+                    if(getShortestDistance(loc) < getShortestDistance(min)){
+                        min = loc;
+                    }
+                }
+            }
+    return min;
+
+     }
+    private boolean isSettled(Vertex location) {
+        return doneProcesses.contains(location);
+    }
+
+    private int getShortestDistance(Vertex destination) {
+        Integer d = totalDistance.get(destination);
+        if (d == null) {
+            return Integer.MAX_VALUE;
+        } else {
+            return d;
+        }
+    }
+
+    public LinkedList<Vertex> getPath(Vertex target) {
+        LinkedList<Vertex> path = new LinkedList<Vertex>();
+        Vertex step = target;
+        // check if a path exists
+        if (prevLocations.get(step) == null) {
+            return null;
+        }
+        path.add(step);
+        while (prevLocations.get(step) != null) {
+            step = prevLocations.get(step);
+            path.add(step);
+        }
+        // Put it into the correct order
+        Collections.reverse(path);
+        return path;
+    }
+
 
 
 
