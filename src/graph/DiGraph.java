@@ -36,12 +36,13 @@ public class DiGraph{
     }
     
     public Vertex addVertex(String location){
-        if(vertexExists(location)){
+        if (this.vertexExists(location)) {
+            return findVertex(location);
+        } else {
             Vertex v = new Vertex(location);
             vertices.add(v);
             return v;
         }
-        else return findVertex(location);
     }
     
     public boolean vertexExists(String location) {
