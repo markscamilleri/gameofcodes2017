@@ -6,5 +6,5 @@ jdk:
 script:
         - mkdir dist
         - javac -d dist src/*/*.java
-        - java -cp dist main/main.Main.Main route.rt < sampleProblem.rds
+        - java -cp dist main.Main route.rt < sampleProblem.rds
         - cat route.rt
