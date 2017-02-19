@@ -4,7 +4,7 @@
 .mtj.tmp/
 
 # Package Files #
-*.jar
+#*.jar
 *.war
 *.ear
 
@@ -15,7 +15,6 @@ hs_err_pid*
 .idea/**
 **/*.iml
 **/*.class
-/out
 
 # Specific for this problem
 *.rt
