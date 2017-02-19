@@ -6,4 +6,4 @@ jdk:
 script:
         - mkdir dist
         - javac -d dist src/*/*.java
-        - java -cp dist main/Main  
+        - java -cp dist main/main.Main.Main route.rt < ampleProblem.rds
