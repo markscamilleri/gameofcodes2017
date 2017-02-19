@@ -128,5 +128,3 @@ public class Main {
         return arrayMin(tuples);
     }
 }
-
-0
