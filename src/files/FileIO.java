@@ -1,35 +1,40 @@
 package files;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Files;
-import java.nio.file.Path;
 import java.nio.file.Paths;
 
 /**
  * Created by mark on 17/02/17.
  */
 public class FileIO {
-    private Path inputFile;
-    private Path outputFile;
+    private String inputFile;
+    private String outputFile;
     
     public FileIO(String inputFileName, String outputFileName) {
-        inputFile = Paths.get(inputFileName);
-        outputFile = Paths.get(outputFileName);
+        inputFile = inputFileName;
+        outputFile = outputFileName;
     }
     
     public FileIO(String outputFileName) {
         inputFile = null;
-        outputFile = Paths.get(outputFileName);
+        outputFile = outputFileName;
     }
     
     public String[] readInput() throws IOException {
-        String[] data = Files.readAllLines(inputFile).toArray(new String[]{});
+        String[] data = Files.readAllLines(Paths.get(inputFile)).toArray(new String[]{});
         return data;
     }
     
     public void writeOutput(String[] lines) throws IOException {
-        for (String line : lines) {
-            Files.write(outputFile, line.getBytes());
+        try(BufferedWriter bw = new BufferedWriter(new FileWriter(outputFile))){
+            for (int i = 0; i < lines.length; i++) {
+                bw.write(lines[i]);
+                bw.newLine();
+                bw.flush();
+            }
         }
     }
 }
