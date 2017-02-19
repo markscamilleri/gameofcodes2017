@@ -18,6 +18,10 @@ public class Vertex {
     
         @Override
         public String toString() {
-            return this.name;
+            if(name.contains("COFFEE")){
+                return this.name.substring(0, name.lastIndexOf(" "));
+            } else {
+                return this.name;
+            }
         }
     }

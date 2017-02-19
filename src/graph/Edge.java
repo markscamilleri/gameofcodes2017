@@ -27,7 +27,7 @@ public class Edge {
     
     public final int getWeight(int currentAggregate) {
         if (weights == null) {
-            return Integer.parseInt(source.getName().split(" ")[1]);
+            return Integer.parseInt(destination.getName().split(" ")[1]);
         } else {
             return weights[currentAggregate];
         }
