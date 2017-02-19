@@ -12,7 +12,7 @@ import java.util.List;
 public class Main {
     
     public static void main(String[] args) {
-        FileIO file = new FileIO("sampleProblem.rds",args[0]);
+        FileIO file = new FileIO(args[0],args[1]);
         try {
             Parser parse = new Parser(file.readInput());
             List<List<Tuple<String, String>>> routes = routeFinder(parse.getRoutes(), parse.getDestination(), parse.getOrigin());
