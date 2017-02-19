@@ -3,6 +3,9 @@ package main;
 import auxiliary.Tuple;
 import files.FileIO;
 import files.Parser;
+import graph.DiGraph;
+import graph.Edge;
+import graph.Vertex;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -17,8 +20,17 @@ public class Main {
             Parser parse = new Parser(file.readInput());
             
             List<List<Tuple<String, String>>> routes = routeFinder(parse.getRoutes(), parse.getDestination(), parse.getOrigin());
-            Tuple<Integer, String[]> result = multRoutOpt(routes, parse.getMaxTime(), parse.getRouteTimes(), parse.getRoutes());
-            file.writeOutput(result.getX2());
+            DiGraph g = DiGraph.initalizeGraph(parse.getPlaces(), parse.getRoutes(), parse.getRouteTimes(), parse.getOrigin());
+            for (Vertex vertex : g.getVertices()) {
+                System.out.println(vertex);
+            }
+    
+            for (Edge edge : g.getEdges()) {
+                System.out.println(edge);
+            }
+            
+//            Tuple<Integer, String[]> result = multRoutOpt(routes, parse.getMaxTime(), parse.getRouteTimes(), parse.getRoutes());
+//            file.writeOutput(result.getX2());
         } catch (IOException e) {
             e.printStackTrace();
         }

@@ -21,8 +21,15 @@ public class DiGraph{
         return edges;
     }
     
-    public Edge addEdge(int row, Vertex source, Vertex destination){
-        Edge e = new Edge(row, source, destination);
+    public Edge addEdge(Vertex source, Vertex destination, int[] weights){
+        Edge e = new Edge(source, destination, weights);
+        edges.add(e);
+        
+        return e;
+    }
+    
+    public Edge addEdge(Vertex source, Vertex destination) {
+        Edge e = new Edge(source, destination);
         edges.add(e);
         
         return e;
@@ -56,23 +63,37 @@ public class DiGraph{
         return null;
     }
     
-    public static DiGraph initalizeGraph(String[] locations, String[][] routes, int weights[][]) {
-        DiGraph graph = new DiGraph(weights);
+    public static DiGraph initalizeGraph(String[] locations, String[][] segments, int weights[][], String origin) {
+        DiGraph graph = new DiGraph();
     
         for (int i = 0; i < locations.length; i++) {
-            graph.addVertex();
+            graph.addVertex(locations[i]);
+        }
+    
+        for (int i = 0; i < segments.length; i++) {
+            if(segments[i][0].charAt(0) == '*' || segments[i][0].equals(origin)){
+                Vertex source = graph.findVertex(segments[i][0]);
+                Vertex destination = graph.findVertex(segments[i][1]);
+                Vertex[] coffeeVertices = new Vertex[weights[i].length];
+                for(int j = 0; j < coffeeVertices.length; i++) {
+                    coffeeVertices[i] = graph.addVertex("COFFEE " + i + " " + segments[i][0]);
+                    graph.addEdge(source, coffeeVertices[i]);
+                    graph.addEdge(coffeeVertices[i], destination);
+                }
+            }
+            graph.addEdge(graph.findVertex(segments[i][0]), graph.findVertex(segments[i][1]), weights[i]);
         }
         
         return graph;
     }
     
-    public static DiGraph initalizeGraph(String[] locations, Tuple<String, String>[] routes, int weights[][]){
-        String[][] newRoutes = new String[2][routes.length]();
-        for (int i = 0; i < routes.length; i++) {
-            newRoutes[i][0] = routes[i].getX1();
-            newRoutes[i][1] = routes[i].getX2();
+    public static DiGraph initalizeGraph(String[] locations, Tuple<String, String>[] segments, int weights[][], String origin){
+        String[][] newRoutes = new String[2][segments.length];
+        for (int i = 0; i < segments.length; i++) {
+            newRoutes[i][0] = segments[i].getX1();
+            newRoutes[i][1] = segments[i].getX2();
         }
         
-        return initalizeGraph(locations, newRoutes, weights);
+        return initalizeGraph(locations, newRoutes, weights, origin);
     }
 }
