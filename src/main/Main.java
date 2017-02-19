@@ -15,6 +15,7 @@ public class Main {
         FileIO file = new FileIO(args[0],args[1]);
         try {
             Parser parse = new Parser(file.readInput());
+            
             List<List<Tuple<String, String>>> routes = routeFinder(parse.getRoutes(), parse.getDestination(), parse.getOrigin());
             Tuple<Integer, String[]> result = multRoutOpt(routes, parse.getMaxTime(), parse.getRouteTimes(), parse.getRoutes());
             file.writeOutput(result.getX2());
