@@ -6,15 +6,19 @@ public class Edge {
     private final int[] weights;
     
     public Edge(Vertex source, Vertex destination, int[] weights) {
+        if(source == null){
+            throw new IllegalArgumentException("Source cannot be null");
+        } else if (destination == null){
+            throw new IllegalArgumentException("Destination cannot be null");
+        }
+        
         this.source = source;
         this.destination = destination;
         this.weights = weights;
     }
     
     public Edge(Vertex source, Vertex destination) {
-        this.source = source;
-        this.destination = destination;
-        this.weights = null;
+        this(source, destination, null);
     }
     
     public final int getWeightAggregate(int currentAggregate) {
@@ -39,6 +43,6 @@ public class Edge {
     
     @Override
     public String toString() {
-        return source + " " + destination;
+        return source + " | " + destination + " || " + weights;
     }
 }

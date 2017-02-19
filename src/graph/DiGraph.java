@@ -55,12 +55,12 @@ public class DiGraph{
     }
     
     public Vertex findVertex(String location) {
+        if(!vertexExists(location)) throw new IllegalArgumentException("Location must exist in the Graph | " + location);
         for (Vertex vertex : vertices) {
             if(vertex.getName().equals(location)) {
                 return vertex;
             }
         }
-        
         return null;
     }
     
@@ -78,8 +78,8 @@ public class DiGraph{
                 Vertex[] coffeeVertices = new Vertex[weights[i].length];
                 for(int j = 0; j < coffeeVertices.length; j++) {
                     coffeeVertices[j] = graph.addVertex("COFFEE " + j + " " + segments[i][0]);
-                    graph.addEdge(source, coffeeVertices[i]);
-                    graph.addEdge(coffeeVertices[i], destination);
+                    graph.addEdge(source, coffeeVertices[j]);
+                    graph.addEdge(coffeeVertices[j], destination, weights[i]);
                 }
             }
             graph.addEdge(graph.findVertex(segments[i][0]), graph.findVertex(segments[i][1]), weights[i]);
