@@ -1,3 +1,3 @@
 @echo off
 
-java -jar callOfDutyHashOps.jar -Xmx3g %1 %2
+java -jar -Xmx3g callOfDutyHashOps.jar %1 %2
