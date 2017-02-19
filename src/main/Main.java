@@ -19,7 +19,7 @@ public class Main {
         try {
             Parser parse = new Parser(file.readInput());
             
-            List<List<Tuple<String, String>>> routes = routeFinder(parse.getRoutes(), parse.getDestination(), parse.getOrigin());
+            //List<List<Tuple<String, String>>> routes = routeFinder(parse.getRoutes(), parse.getDestination(), parse.getOrigin());
             DiGraph g = DiGraph.initalizeGraph(parse.getPlaces(), parse.getRoutes(), parse.getRouteTimes(), parse.getOrigin());
             for (Vertex vertex : g.getVertices()) {
                 System.out.println(vertex);

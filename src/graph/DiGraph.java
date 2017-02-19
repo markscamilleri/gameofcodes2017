@@ -75,7 +75,7 @@ public class DiGraph{
                 Vertex source = graph.findVertex(segments[i][0]);
                 Vertex destination = graph.findVertex(segments[i][1]);
                 Vertex[] coffeeVertices = new Vertex[weights[i].length];
-                for(int j = 0; j < coffeeVertices.length; i++) {
+                for(int j = 0; j < coffeeVertices.length; j++) {
                     coffeeVertices[j] = graph.addVertex("COFFEE " + j + " " + segments[i][0]);
                     graph.addEdge(source, coffeeVertices[i]);
                     graph.addEdge(coffeeVertices[i], destination);
