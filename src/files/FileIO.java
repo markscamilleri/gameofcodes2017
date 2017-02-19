@@ -30,6 +30,7 @@ public class FileIO {
             String[] data = Files.readAllLines(inputFile).toArray(new String[]{});
             return data;
         } else return readInputFromStdIn();
+        
     }
     
     private String[] readInputFromStdIn() {

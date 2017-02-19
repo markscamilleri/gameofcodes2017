@@ -7,4 +7,4 @@ script:
         - mkdir dist
         - javac -d dist src/*/*.java
         - java -cp dist main.Main route.rt < sampleProblem.rds
-        - cat route.rt
+
