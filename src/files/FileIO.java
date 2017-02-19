@@ -4,6 +4,9 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
 
 /**
  * Created by mark on 17/02/17.
@@ -17,10 +20,26 @@ public class FileIO {
         outputFile = Paths.get(outputFileName);
     }
     
+    public FileIO(String outputFileName){
+        inputFile = null;
+        outputFile = Paths.get(outputFileName);
+    }
+    
     public String[] readInput() throws IOException {
-        String[] data = Files.readAllLines(inputFile).toArray(new String[]{});
+        if(inputFile != null) {
+            String[] data = Files.readAllLines(inputFile).toArray(new String[]{});
+            return data;
+        } else return readInputFromStdIn();
         
-        return data;
+    }
+    
+    private String[] readInputFromStdIn() {
+        Scanner scanner = new Scanner(System.in);
+        List<String> data = new ArrayList<>();
+        
+        while(scanner.hasNext()) data.add(scanner.nextLine());
+        
+        return data.toArray(new String[0]);
     }
     
     public void writeOutput(String[] lines) throws IOException {

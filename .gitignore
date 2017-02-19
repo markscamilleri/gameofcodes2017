@@ -15,3 +15,7 @@ hs_err_pid*
 .idea/**
 **/*.iml
 **/*.class
+
+# Specific for this problem
+*.rt
+**/*.rt
