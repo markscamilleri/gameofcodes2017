@@ -21,8 +21,6 @@ public class Main {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        
-        
     }
     
     private static List<List<Tuple<String, String>>> routeFinder(String[][] route, String Destination, String origin) {
